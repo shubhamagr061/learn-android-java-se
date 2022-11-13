@@ -83,14 +83,14 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
-    }
-
     private boolean isPermissionAllowed() {
         int result = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
         int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
         return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
     }
 
     @Override
@@ -126,7 +126,6 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 break;
         }
-
     }
 
     private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
@@ -137,4 +136,5 @@ public class LoginActivity extends AppCompatActivity {
                 .create()
                 .show();
     }
+
 }
