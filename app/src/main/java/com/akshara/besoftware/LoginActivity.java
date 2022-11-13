@@ -1,21 +1,18 @@
-package com.akshara.ramroapp;
+package com.akshara.besoftware;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static android.Manifest.permission.CAMERA;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,13 +21,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 
 
 public class LoginActivity extends AppCompatActivity {
     private static final int PERMISSION_REQUEST_CODE = 200;
     private Button btnSignup, btnLogin, btnPermission;
     private EditText etUsername, etPassword;
+    private Context context = LoginActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                Intent intent = new Intent(context, SignupActivity.class);
                 startActivity(intent);
             }
         });
@@ -73,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (isPermissionAllowed()) {
-                    Toast.makeText(LoginActivity.this, "Permission Already Granted", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Permission Already Granted", Toast.LENGTH_SHORT).show();
                 } else {
                     requestPermission();
                 }
@@ -84,13 +81,15 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isPermissionAllowed() {
-        int result = ContextCompat.checkSelfPermission(getApplicationContext(), ACCESS_FINE_LOCATION);
+        int result = ContextCompat.checkSelfPermission(getApplicationContext(),
+                ACCESS_FINE_LOCATION);
         int result1 = ContextCompat.checkSelfPermission(getApplicationContext(), CAMERA);
         return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED;
     }
 
     private void requestPermission() {
-        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION, CAMERA}, PERMISSION_REQUEST_CODE);
+        ActivityCompat.requestPermissions(this, new String[]{ACCESS_FINE_LOCATION,
+                CAMERA}, PERMISSION_REQUEST_CODE);
     }
 
     @Override
@@ -102,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                     boolean locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED;
                     if (locationAccepted && cameraAccepted)
-                        Toast.makeText(this, "Permission Granted, Now you can access location data and camera.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Permission Granted, Now you can access location data and camera.", Toast.LENGTH_LONG).show();
                     else {
                         Toast.makeText(this, "Permission Denied, You cannot access location data and camera.", Toast.LENGTH_LONG).show();
 

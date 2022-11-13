@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/activity_login.xml" value="0.4" />
+        <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/activity_fragment.xml" value="0.24270833333333333" />
+        <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/activity_signup.xml" value="0.4" />
+        <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/fragment_bottom_example.xml" value="0.24166666666666667" />
+        <entry key="..\:/Projects/akshara/RamroApp/app/src/main/res/layout/fragment_example.xml" value="0.24270833333333333" />
       </map>
     </option>
   </component>
