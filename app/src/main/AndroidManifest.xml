@@ -22,24 +22,28 @@
         android:theme="@style/Theme.BESoftware"
         tools:targetApi="31">
         <activity
-            android:name=".fragment.fragmentusingxml.FragmentActivity"
+            android:name=".fragment.FragmentMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".fragment.addfragmentusingcode.FragmentCodeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.addfragmentusingxml.FragmentXMLActivity"
+            android:exported="true"/>
         <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

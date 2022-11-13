@@ -3,27 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_margin="40dp"
     android:layout_height="match_parent"
-    tools:context=".fragment.addfragmentusingxml.FragmentXMLActivity">
+    tools:context=".fragment.FragmentMainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragContainerTop"
-        android:name="com.akshara.besoftware.fragment.ExampleTopFragment"
+    <Button
+        android:text="Fragment using XML"
+        android:layout_margin="16dp"
+        android:id="@+id/btnAddFragmentUsingXML"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragContainerBottom"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragContainerBottom"
-        android:name="com.akshara.besoftware.fragment.ExampleBottomFragment"
+    <Button
+        android:layout_margin="16dp"
+        android:id="@+id/btnAddFragmentUsingCode"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:text="Fragment using Code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragContainerTop" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddFragmentUsingXML" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
