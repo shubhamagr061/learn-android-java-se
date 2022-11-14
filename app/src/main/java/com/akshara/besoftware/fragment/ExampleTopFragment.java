@@ -12,6 +12,4 @@ public class ExampleTopFragment extends Fragment {
     public ExampleTopFragment(){
         super(R.layout.fragment_top_example);
     }
-
-
 }
