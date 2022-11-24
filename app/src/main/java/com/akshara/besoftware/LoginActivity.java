@@ -51,17 +51,20 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (etUsername.getText().toString().isEmpty()) {
-                    etUsername.setError("Username cannot be blank");
-                }
-                if (etPassword.getText().toString().isEmpty()) {
-                    etPassword.setError("Password cannot be blank");
-                }
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
 
-                Log.d("ramro", "Username is " + username);
-                Log.d("ramro", "Password is " + password);
+                if(meroValidation()){
+                    String username = etUsername.getText().toString();
+                    String password = etPassword.getText().toString();
+                    Log.d("ramro", "Username is " + username);
+                    Log.d("ramro", "Password is " + password);
+
+                    Intent intent = new Intent(LoginActivity.this,
+                            BottomNavigationActivity.class);
+                    startActivity(intent);
+                };
+
+
+
             }
         });
 
@@ -78,6 +81,18 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private boolean meroValidation(){
+        if (etUsername.getText().toString().isEmpty()) {
+            etUsername.setError("Username cannot be blank");
+            return false;
+        }
+        if (etPassword.getText().toString().isEmpty()) {
+            etPassword.setError("Password cannot be blank");
+            return false;
+        }
+        return true;
     }
 
     private boolean isPermissionAllowed() {
