@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:src="@drawable/student"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/ivProduct"
+        android:layout_width="60dp"
+        android:layout_height="60dp"/>
+
+    <TextView
+        android:textSize="16sp"
+        android:text="dell xps "
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivProduct"
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:text="2500.00"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintStart_toEndOf="@+id/ivProduct"
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <View
+        app:layout_constraintTop_toBottomOf="@+id/ivProduct"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/md_blue_grey_100"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

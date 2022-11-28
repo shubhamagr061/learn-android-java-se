@@ -21,6 +21,18 @@
         android:theme="@style/Theme.BESoftware"
         tools:targetApi="31">
         <activity
+            android:name=".ProductActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".BottomNavigationActivity"
             android:exported="false"
             android:label="@string/title_activity_bottom_navigation">
@@ -30,9 +42,7 @@
         </activity>
         <activity
             android:name=".uicomponents.UIComponentActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".fragment.FragmentMainActivity"
             android:exported="true" />
@@ -47,11 +57,8 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true">
+
         </activity>
         <activity
             android:name=".MainActivity"
