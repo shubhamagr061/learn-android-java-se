@@ -7,13 +7,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.akshara.besoftware.adapter.ProductAdapter;
+import com.akshara.besoftware.api.ApiClient;
+import com.akshara.besoftware.api.ApiInterface;
 import com.akshara.besoftware.model.Product;
+import com.akshara.besoftware.response.FoodResponse;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductActivity extends AppCompatActivity {
 
     private RecyclerView rvProduct;
+
+    private ApiInterface apiInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,27 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         rvProduct = findViewById(R.id.rvProduct);
+        apiInterface= ApiClient.getClient().create(ApiInterface.class);
+
+        Call<FoodResponse> call = apiInterface.getFood();
+        call.enqueue(new Callback<FoodResponse>() {
+            @Override
+            public void onResponse(Call<FoodResponse> call, Response<FoodResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<FoodResponse> call, Throwable t) {
+
+            }
+        });
+
+
+
+
+
+
+
 
         Product product = new Product();
         product.setName("Dell Xps");
