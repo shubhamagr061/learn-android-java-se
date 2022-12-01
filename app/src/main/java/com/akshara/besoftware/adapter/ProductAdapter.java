@@ -11,15 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.akshara.besoftware.R;
+import com.akshara.besoftware.api.Api;
+import com.akshara.besoftware.model.Food;
 import com.akshara.besoftware.model.Product;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     private Context context;
-    private ArrayList<Product> productArrayList;
+    private ArrayList<Food> productArrayList;
 
-    public ProductAdapter(Context context, ArrayList<Product> productArrayList){
+    public ProductAdapter(Context context, ArrayList<Food> productArrayList){
         this.context = context;
         this.productArrayList = productArrayList;
     }
@@ -33,9 +36,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     @Override
     public void onBindViewHolder(@NonNull ProductAdapter.ProductViewHolder holder, int position) {
-        Product item  = productArrayList.get(position);
+        Food item  = productArrayList.get(position);
         holder.tvTitle.setText(item.getName());
-        holder.tvPrice.setText(String.valueOf(item.getPrice()));
+        holder.tvPrice.setText(String.format("NRs. %s",item.getPrice()));
+//        https://oishirestaurant.akshara.com.np/storage/69/user.png
+        Glide.with(context)
+                .load(Api.BASE_URL+item.getUrl())
+                .placeholder(R.drawable.dish)
+                .into(holder.ivProduct);
     }
 
     @Override
