@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                     Log.d("ramro", "Password is " + password);
 
                     Intent intent = new Intent(LoginActivity.this,
-                            ProductActivity.class);
+                            BottomNavigationActivity.class);
                     startActivity(intent);
                 };
 
