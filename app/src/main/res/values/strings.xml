@@ -6,4 +6,7 @@
     <string name="title_notifications">Notifications</string>
     <string name="txtProductList">Products</string>
     <string name="txtAllProducts">All Products</string>
+    <string name="taskTitle">Task Title</string>
+    <string name="taskDescription">Task Description</string>
+    <string name="txtAdd">Add</string>
 </resources>

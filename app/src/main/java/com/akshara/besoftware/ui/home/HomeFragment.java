@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.akshara.besoftware.AddTaskActivity;
 import com.akshara.besoftware.ProductActivity;
 import com.akshara.besoftware.databinding.FragmentHomeBinding;
 
@@ -33,6 +34,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ProductActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddTaskActivity.class);
                 startActivity(intent);
             }
         });

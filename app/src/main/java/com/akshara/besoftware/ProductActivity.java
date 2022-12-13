@@ -39,29 +39,6 @@ public class ProductActivity extends AppCompatActivity {
         setToolbar();
         iniVars();
         getDataFromApi();
-
-//        Product product = new Product();
-//        product.setName("Dell Xps");
-//        product.setPrice(2600.00);
-//
-//        Product product2 = new Product();
-//        product2.setName("Lenovo");
-//        product2.setPrice(2600.00);
-//
-//        Product product3 = new Product();
-//        product3.setName("MSI");
-//        product3.setPrice(2600.00);
-//
-//        Product product4 = new Product();
-//        product4.setName("Razer Blade");
-//        product4.setPrice(2600.00);
-//
-//        ArrayList<Product> productArrayList = new ArrayList<>();
-//        productArrayList.add(product);
-//        productArrayList.add(product2);
-//        productArrayList.add(product3);
-//        productArrayList.add(product4);
-
     }
 
     private void iniVars() {
