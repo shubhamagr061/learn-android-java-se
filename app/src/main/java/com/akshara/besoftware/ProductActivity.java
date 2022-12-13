@@ -1,10 +1,15 @@
 package com.akshara.besoftware;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.akshara.besoftware.adapter.ProductAdapter;
@@ -21,8 +26,9 @@ import retrofit2.Response;
 
 public class ProductActivity extends AppCompatActivity {
 
+    private String TAG;
     private RecyclerView rvProduct;
-
+    private ProgressBar progressBar;
     private ApiInterface apiInterface;
 
     @Override
@@ -30,35 +36,9 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        rvProduct = findViewById(R.id.rvProduct);
-        apiInterface= ApiClient.getClient().create(ApiInterface.class);
-
-        Call<FoodResponse> call = apiInterface.getFood();
-        call.enqueue(new Callback<FoodResponse>() {
-            @Override
-            public void onResponse(Call<FoodResponse> call, Response<FoodResponse> response) {
-                FoodResponse rs = response.body();
-                if(rs.isSuccess()){
-                    Toast.makeText(ProductActivity.this, rs.getMessage(),Toast.LENGTH_LONG).show();
-
-                    ProductAdapter adapter = new ProductAdapter(ProductActivity.this,
-                            rs.getData());
-
-                    rvProduct.setLayoutManager(new LinearLayoutManager(ProductActivity.this,
-                            LinearLayoutManager.VERTICAL,false));
-
-                    rvProduct.setAdapter(adapter);
-                }else{
-                    Toast.makeText(ProductActivity.this, rs.getMessage(),Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<FoodResponse> call, Throwable t) {
-
-            }
-        });
+        setToolbar();
+        iniVars();
+        getDataFromApi();
 
 //        Product product = new Product();
 //        product.setName("Dell Xps");
@@ -82,5 +62,57 @@ public class ProductActivity extends AppCompatActivity {
 //        productArrayList.add(product3);
 //        productArrayList.add(product4);
 
+    }
+
+    private void iniVars() {
+        rvProduct = findViewById(R.id.rvProduct);
+        progressBar = findViewById(R.id.progressBar);
+    }
+
+    private void getDataFromApi() {
+        progressBar.setVisibility(View.VISIBLE);
+        apiInterface= ApiClient.getClient().create(ApiInterface.class);
+        Call<FoodResponse> call = apiInterface.getFood();
+        call.enqueue(new Callback<FoodResponse>() {
+            @Override
+            public void onResponse(Call<FoodResponse> call, Response<FoodResponse> response) {
+                progressBar.setVisibility(View.INVISIBLE);
+                FoodResponse rs = response.body();
+                if(rs.isSuccess()){
+                    Toast.makeText(ProductActivity.this, rs.getMessage(),Toast.LENGTH_LONG).show();
+                    ProductAdapter adapter = new ProductAdapter(ProductActivity.this,
+                            rs.getData());
+                    rvProduct.setLayoutManager(new LinearLayoutManager(ProductActivity.this,
+                            LinearLayoutManager.VERTICAL,false));
+
+                    rvProduct.setAdapter(adapter);
+                }else{
+                    Toast.makeText(ProductActivity.this, rs.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FoodResponse> call, Throwable t) {
+                progressBar.setVisibility(View.INVISIBLE);
+                Log.e("RetrofitApi",t.getMessage());
+            }
+        });
+
+    }
+
+    private void setToolbar() {
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setTitle(R.string.txtProductList);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
