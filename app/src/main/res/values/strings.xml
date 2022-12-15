@@ -9,4 +9,5 @@
     <string name="taskTitle">Task Title</string>
     <string name="taskDescription">Task Description</string>
     <string name="txtAdd">Add</string>
+    <string name="txtTask">All Task</string>
 </resources>

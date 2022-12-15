@@ -42,6 +42,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 Toast.makeText(AddTaskActivity.this, "Task added", Toast.LENGTH_SHORT).show();
                 Log.d("DB_TEST", "Database Size ==> "+App.db.taskDao().getAllTask().size());
+                AddTaskActivity.this.finish();
             }
         });
     }

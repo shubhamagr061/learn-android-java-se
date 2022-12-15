@@ -23,6 +23,13 @@
         android:theme="@style/Theme.BESoftware"
         tools:targetApi="31">
         <activity
+            android:name=".AllTaskActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".AddTaskActivity"
             android:exported="false">
             <meta-data
